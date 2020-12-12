@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/mgl845/src-gen" creationIcons="false" editDirectory="/mgl845.edit/src-gen"
+    editorDirectory="/mgl845.editor/src-gen" modelPluginID="mgl845" modelName="Mgl845"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>mgl845.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Mgl845" disposableProviderFactory="true" ecorePackage="mgl845.ecore#/">
+    <genClasses ecoreClass="mgl845.ecore#//Personne">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/nom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/prenom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/adresse"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Client">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Client/reservation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Client/dossierclient"/>
+      <genOperations ecoreOperation="mgl845.ecore#//Client/reserver"/>
+      <genOperations ecoreOperation="mgl845.ecore#//Client/louer"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Gestionnaire">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Gestionnaire/agence"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Commis">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Commis/reservation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Commis/location"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//DossierClient">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//DossierClient/numeroDossier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//DossierClient/nbInfraction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//DossierClient/inspection"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//AgenceArivee"/>
+    <genClasses ecoreClass="mgl845.ecore#//Agence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Agence/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Agence/nbVoitureDisponibles"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//AgenceDepart"/>
+    <genClasses ecoreClass="mgl845.ecore#//Reservation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/client"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Location/dureeLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Location/voiture"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Categorie"/>
+    <genClasses ecoreClass="mgl845.ecore#//Paiement"/>
+    <genClasses ecoreClass="mgl845.ecore#//Voiture"/>
+    <genClasses ecoreClass="mgl845.ecore#//Transfet"/>
+    <genClasses ecoreClass="mgl845.ecore#//Retour"/>
+    <genClasses ecoreClass="mgl845.ecore#//Inspection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Inspection/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Inspection/detailnspectiom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Inspection/estEnInfractiom"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
