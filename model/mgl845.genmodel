@@ -14,49 +14,87 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/prenom"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Personne/adresse"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Personne/client"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Personne/gestionnaire"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Personne/commis"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Client">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Client/reservation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Client/dossierclient"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Client/personne"/>
       <genOperations ecoreOperation="mgl845.ecore#//Client/reserver"/>
       <genOperations ecoreOperation="mgl845.ecore#//Client/louer"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Gestionnaire">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Gestionnaire/agence"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Gestionnaire/personne"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Commis">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Commis/reservation"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Commis/location"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Commis/reservation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Commis/personne"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//DossierClient">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//DossierClient/numeroDossier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//DossierClient/nbInfraction"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//DossierClient/inspection"/>
     </genClasses>
-    <genClasses ecoreClass="mgl845.ecore#//AgenceArivee"/>
+    <genClasses ecoreClass="mgl845.ecore#//AgenceArivee">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//AgenceArivee/voiture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//AgenceArivee/retour"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//AgenceArivee/agence"/>
+    </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Agence">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Agence/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Agence/nbVoitureDisponibles"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Agence/voiture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Agence/transfet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Agence/agencedepart"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Agence/agencearivee"/>
     </genClasses>
-    <genClasses ecoreClass="mgl845.ecore#//AgenceDepart"/>
+    <genClasses ecoreClass="mgl845.ecore#//AgenceDepart">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//AgenceDepart/location"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//AgenceDepart/agence"/>
+    </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Reservation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/client"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/paiement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/categorie"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/retour"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/paiement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/categorie"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/commis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Reservation/id"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Location">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Location/dureeLocation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Location/voiture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Location/commis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Location/dateDebut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Location/estApprouvee"/>
     </genClasses>
-    <genClasses ecoreClass="mgl845.ecore#//Categorie"/>
+    <genClasses ecoreClass="mgl845.ecore#//Categorie">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Categorie/reservation"/>
+    </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Paiement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Paiement/accompte"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Paiement/total"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Paiement/reservation"/>
     </genClasses>
-    <genClasses ecoreClass="mgl845.ecore#//Voiture"/>
-    <genClasses ecoreClass="mgl845.ecore#//Transfet"/>
-    <genClasses ecoreClass="mgl845.ecore#//Retour"/>
+    <genClasses ecoreClass="mgl845.ecore#//Voiture">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Voiture/transfet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Voiture/agencearivee"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Transfet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Transfet/voiture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Transfet/agence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Transfet/dateTransfert"/>
+    </genClasses>
+    <genClasses ecoreClass="mgl845.ecore#//Retour">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Retour/inspection"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Retour/agencearivee"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Retour/reservation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Retour/dateRetour"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Retour/id"/>
+    </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Inspection">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Inspection/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Inspection/detailnspectiom"/>
