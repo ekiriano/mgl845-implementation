@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mgl845" nsURI="http://www.example.org/mgl845" nsPrefix="mgl845">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Personne">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prenom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adresse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//Client"
         eOpposite="#//Client/personne"/>
@@ -14,6 +22,14 @@
         eOpposite="#//Commis/personne"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Client">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="doitEtreMajeur nePeutPasAvoir3InfractionsConsecutives uneSeuleLocationActive"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="doitEtreMajeur" value="self.age >= 18"/>
+      <details key="nePeutPasAvoir3InfractionsConsecutives" value="self.dossierclient.nbInfractionConsecutives &lt;= 3"/>
+      <details key="uneSeuleLocationActive" value="self.location->select(l | l.estActive = 1) =1"/>
+    </eAnnotations>
     <eOperations name="reserver"/>
     <eOperations name="louer"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reservation" upperBound="-1"
@@ -22,11 +38,15 @@
         eType="#//DossierClient" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personne" eType="#//Personne"
         eOpposite="#//Personne/client"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//Location"
+        eOpposite="#//Location/client"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Gestionnaire">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="agence" eType="#//Agence"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="personne" eType="#//Personne"
         eOpposite="#//Personne/gestionnaire"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agence" eType="#//Agence"
+        eOpposite="#//Agence/gestionnaire"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Commis">
     <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//Location"
@@ -37,10 +57,14 @@
         eOpposite="#//Personne/commis"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DossierClient">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeroDossier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbInfraction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numeroDossier" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbInfraction" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inspection" upperBound="-1"
         eType="#//Inspection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbInfractionConsecutives"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AgenceArivee">
     <eStructuralFeatures xsi:type="ecore:EReference" name="voiture" eType="#//Voiture"
@@ -51,8 +75,15 @@
         eOpposite="#//Agence/agencearivee"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Agence">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbVoitureDisponibles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="unseulgestionnaire"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="unseulgestionnaire" value="self.gestionnaire->size() = 1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbVoitureDisponibles" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="voiture" lowerBound="1"
         upperBound="-1" eType="#//Voiture" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transfet" eType="#//Transfet"
@@ -61,6 +92,8 @@
         eOpposite="#//AgenceDepart/agence"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agencearivee" eType="#//AgenceArivee"
         eOpposite="#//AgenceArivee/agence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gestionnaire" eType="#//Gestionnaire"
+        eOpposite="#//Gestionnaire/agence"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AgenceDepart">
     <eStructuralFeatures xsi:type="ecore:EReference" name="location" lowerBound="1"
@@ -69,6 +102,12 @@
         eOpposite="#//Agence/agencedepart"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reservation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="depotMinimum"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="depotMinimum" value="self.paiement.accompte >= self.paiement.total*0.2"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//Client"
         eOpposite="#//Client/reservation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="retour" eType="#//Retour"
@@ -79,24 +118,38 @@
         eType="#//Categorie" eOpposite="#//Categorie/reservation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commis" eType="#//Commis"
         eOpposite="#//Commis/reservation"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Location">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dureeLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="voiture" eType="#//Voiture"
-        containment="true"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="dureeLocationInf30jours"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="dureeLocationInf30jours" value="self.dureeLocation &lt;= 30"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dureeLocation" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commis" eType="#//Commis"
         eOpposite="#//Commis/location"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estApprouvee" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estApprouvee" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="voiture" eType="#//Voiture"
+        eOpposite="#//Voiture/location"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//Client"
+        eOpposite="#//Client/location"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estActive" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Categorie">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reservation" lowerBound="1"
         eType="#//Reservation" eOpposite="#//Reservation/categorie"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Paiement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accompte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accompte" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reservation" eType="#//Reservation"
         eOpposite="#//Reservation/paiement"/>
   </eClassifiers>
@@ -105,6 +158,11 @@
         eOpposite="#//Transfet/voiture"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agencearivee" eType="#//AgenceArivee"
         eOpposite="#//AgenceArivee/voiture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//Location"
+        eOpposite="#//Location/voiture"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="marque" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modele" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transfet">
     <eStructuralFeatures xsi:type="ecore:EReference" name="voiture" eType="#//Voiture"
@@ -121,11 +179,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reservation" eType="#//Reservation"
         eOpposite="#//Reservation/retour"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateRetour" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Inspection">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="detailnspectiom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estEnInfractiom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estEnInfractiom" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>
