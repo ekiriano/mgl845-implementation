@@ -34,11 +34,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Agence">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbVoitureDisponibles" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="voiture" lowerBound="1"
+        upperBound="-1" eType="#//Voiture" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AgenceDepart"/>
   <eClassifiers xsi:type="ecore:EClass" name="Reservation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//Client"
         eOpposite="#//Client/reservation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paiement" lowerBound="1"
+        eType="#//Paiement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="categorie" lowerBound="1"
+        eType="#//Categorie" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Location">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dureeLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -46,7 +52,10 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Categorie"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Paiement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Paiement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accompte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Voiture"/>
   <eClassifiers xsi:type="ecore:EClass" name="Transfet"/>
   <eClassifiers xsi:type="ecore:EClass" name="Retour"/>

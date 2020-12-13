@@ -37,17 +37,23 @@
     <genClasses ecoreClass="mgl845.ecore#//Agence">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Agence/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Agence/nbVoitureDisponibles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Agence/voiture"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//AgenceDepart"/>
     <genClasses ecoreClass="mgl845.ecore#//Reservation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/client"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/paiement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Reservation/categorie"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Location">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Location/dureeLocation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mgl845.ecore#//Location/voiture"/>
     </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Categorie"/>
-    <genClasses ecoreClass="mgl845.ecore#//Paiement"/>
+    <genClasses ecoreClass="mgl845.ecore#//Paiement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Paiement/accompte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mgl845.ecore#//Paiement/total"/>
+    </genClasses>
     <genClasses ecoreClass="mgl845.ecore#//Voiture"/>
     <genClasses ecoreClass="mgl845.ecore#//Transfet"/>
     <genClasses ecoreClass="mgl845.ecore#//Retour"/>
