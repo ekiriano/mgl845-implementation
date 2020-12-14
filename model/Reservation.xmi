@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mgl845:Reservation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mgl845="http://www.example.org/mgl845" xsi:schemaLocation="http://www.example.org/mgl845 mgl845.ecore">
+<mgl845:Reservation
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mgl845="http://www.example.org/mgl845"
+    xsi:schemaLocation="http://www.example.org/mgl845 mgl845.ecore">
   <client href="Client.xmi#/"/>
   <retour href="Retour.xmi#/"/>
-  <paiement href="Paiement.xmi#/"/>
-  <categorie href="Categorie.xmi#/"/>
+  <paiement
+      href="Paiement.xmi#/"/>
+  <categorie
+      href="Categorie.xmi#/"/>
   <commis href="Commis.xmi#/"/>
 </mgl845:Reservation>
