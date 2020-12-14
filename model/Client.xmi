@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mgl845:Client xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:mgl845="http://www.example.org/mgl845" xsi:schemaLocation="http://www.example.org/mgl845 mgl845.ecore"/>
+<mgl845:Client xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mgl845="http://www.example.org/mgl845" xsi:schemaLocation="http://www.example.org/mgl845 mgl845.ecore" age="19">
+  <reservation href="Reservation.xmi#/"/>
+  <dossierclient nbInfraction="3" nbInfractionConsecutives="1">
+    <inspection detailnspectiom="rien a signaler"/>
+  </dossierclient>
+  <personne href="Personne.xmi#/"/>
+  <location href="Location.xmi#/"/>
+</mgl845:Client>

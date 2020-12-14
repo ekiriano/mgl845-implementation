@@ -7,6 +7,20 @@
     <semanticResources>Client.xmi</semanticResources>
     <semanticResources>Gestionnaire.xmi</semanticResources>
     <semanticResources>Commis.xmi</semanticResources>
+    <semanticResources>Personne1.xmi</semanticResources>
+    <semanticResources>Personne2.xmi</semanticResources>
+    <semanticResources>Location.xmi</semanticResources>
+    <semanticResources>Agence.xmi</semanticResources>
+    <semanticResources>Voiture1.xmi</semanticResources>
+    <semanticResources>Voiture2.xmi</semanticResources>
+    <semanticResources>AgenceT.xmi</semanticResources>
+    <semanticResources>GestionnaireT.xmi</semanticResources>
+    <semanticResources>PersonneT.xmi</semanticResources>
+    <semanticResources>Transfert.xmi</semanticResources>
+    <semanticResources>Voiture.xmi</semanticResources>
+    <semanticResources>AgenceDepart.xmi</semanticResources>
+    <semanticResources>AgenceArivee.xmi</semanticResources>
+    <semanticResources>Retour.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_j7HUkDy3EeuuVvS87B28LQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j9TF4Dy3EeuuVvS87B28LQ" name="mgl845" repPath="#_j8RLIDy3EeuuVvS87B28LQ" changeId="fa4680e0-c1aa-4f27-b140-6e64b88199ad">

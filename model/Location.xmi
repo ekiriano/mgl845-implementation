@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mgl845:Location xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mgl845="http://www.example.org/mgl845" xsi:schemaLocation="http://www.example.org/mgl845 mgl845.ecore" dureeLocation="15" dateDebut="0018-06-12T00:00:00.000-0500" estApprouvee="true">
+  <commis href="Commis.xmi#/"/>
+  <voiture href="Voiture.xmi#/"/>
+  <client href="Client.xmi#/"/>
+</mgl845:Location>
