@@ -28,7 +28,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
       <details key="doitEtreMajeur" value="self.age >= 18"/>
       <details key="nePeutPasAvoir3InfractionsConsecutives" value="self.dossierclient.nbInfractionConsecutives &lt;= 3"/>
-      <details key="uneSeuleLocationActive" value="self.location->select(l | l.estActive = 1)->size() =1"/>
+      <details key="uneSeuleLocationActive" value="self.location->select(l | l.estActive = 1)->size() &lt;= 1"/>
     </eAnnotations>
     <eOperations name="reserver"/>
     <eOperations name="louer"/>
